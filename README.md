@@ -1,7 +1,7 @@
 # Sistema de Gerenciamento de Estacionamento
 Este projeto implementa um sistema para gerenciamento de estacionamento usando Spring Boot e Jakarta EE.
 ## Descrição
-O Sistema de Gerenciamento de Estacionamento é uma aplicação que permite controlar e administrar veículos em um estacionamento. Com ele, é possível cadastrar, consultar, atualizar e remover informações sobre os veículos estacionados.
+O Sistema de Gerenciamento de Estacionamento é uma aplicação que permite controlar e administrar veículos e empresas em um estacionamento. Com ele, é possível cadastrar, consultar, atualizar e remover informações sobre os veículos estacionados e as empresas parceiras.
 ## Tecnologias Utilizadas
 - Java 17
 - Spring Boot
@@ -11,10 +11,11 @@ O Sistema de Gerenciamento de Estacionamento é uma aplicação que permite cont
 - Maven
 
 ## Recursos
-- Cadastro de veículos
-- Consulta de veículos (individual ou paginada)
-- Atualização de informações dos veículos
-- Remoção de veículos
+- Cadastro e gerenciamento de veículos
+- Cadastro e gerenciamento de empresas
+- Consultas individuais ou paginadas
+- Atualização de informações
+- Remoção de registros
 
 ## Estrutura do Projeto
 O projeto segue a arquitetura MVC (Model-View-Controller) com as seguintes camadas:
@@ -25,7 +26,8 @@ O projeto segue a arquitetura MVC (Model-View-Controller) com as seguintes camad
 - **Entities**: Representações das tabelas do banco de dados
 
 ## API REST
-A aplicação expõe uma API REST para gerenciamento de veículos com os seguintes endpoints:
+A aplicação expõe uma API REST com os seguintes endpoints:
+### Endpoints de Veículos
 
 | Método HTTP | Endpoint | Descrição |
 | --- | --- | --- |
@@ -34,6 +36,15 @@ A aplicação expõe uma API REST para gerenciamento de veículos com os seguint
 | POST | `/veiculos` | Cadastra um novo veículo |
 | PUT | `/veiculos/{id}` | Atualiza as informações de um veículo |
 | DELETE | `/veiculos/{id}` | Remove um veículo do sistema |
+### Endpoints de Empresas
+
+| Método HTTP | Endpoint | Descrição |
+| --- | --- | --- |
+| GET | `/empresas/{id}` | Busca uma empresa pelo ID |
+| GET | `/empresas` | Lista todas as empresas (com suporte a paginação) |
+| POST | `/empresas` | Cadastra uma nova empresa |
+| PUT | `/empresas/{id}` | Atualiza as informações de uma empresa |
+| DELETE | `/empresas/{id}` | Remove uma empresa do sistema |
 ## Como Executar
 1. Clone o repositório
 ``` bash
@@ -52,25 +63,3 @@ A aplicação expõe uma API REST para gerenciamento de veículos com os seguint
 ## Requisitos
 - JDK 17 ou superior
 - Maven 3.6 ou superior
-
-## Exemplos de Uso
-### Cadastrar um novo veículo
-``` bash
-curl -X POST http://localhost:8080/veiculos \
-  -H "Content-Type: application/json" \
-  -d '{
-    "marca": "Volkswagem",
-    "modelo": "Gol",
-    "cor": "Preto",
-    "placa": "REZ0E98",
-    "tipo": "Carro"
-    }'
-```
-### Consultar todos os veículos (com paginação)
-``` bash
-curl -X GET "http://localhost:8080/veiculos?page=0&size=10&sort=id,desc"
-```
-### Consultar um veículo específico
-``` bash
-curl -X GET http://localhost:8080/veiculos/1
-```
