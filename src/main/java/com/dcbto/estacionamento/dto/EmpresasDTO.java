@@ -12,6 +12,9 @@ public class EmpresasDTO {
     private Integer qntVagasMotos;
     private Integer qntVagasCarros;
 
+    public EmpresasDTO() {
+    }
+
     public EmpresasDTO(Long id, String nome, String cnpj, String endereco, String telefone, Integer qntVagasMotos, Integer qntVagasCarros) {
         this.id = id;
         this.nome = nome;

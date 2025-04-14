@@ -11,6 +11,9 @@ public class VeiculosDTO {
     private String placa;
     private String tipo;
 
+    public VeiculosDTO() {
+    }
+
     public VeiculosDTO(Long id, String marca, String modelo, String cor, String placa, String tipo) {
         this.id = id;
         this.marca = marca;
