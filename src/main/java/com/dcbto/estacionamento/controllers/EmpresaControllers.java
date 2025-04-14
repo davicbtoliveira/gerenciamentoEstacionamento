@@ -20,7 +20,7 @@ public class EmpresaControllers {
     private EmpresaService service;
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmpresasDTO> findById(Long id) {
+    public ResponseEntity<EmpresasDTO> findById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 

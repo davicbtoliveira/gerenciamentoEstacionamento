@@ -1,14 +1,20 @@
 package com.dcbto.estacionamento.dto;
 
 import com.dcbto.estacionamento.entities.Veiculos;
+import jakarta.validation.constraints.NotBlank;
 
 public class VeiculosDTO {
 
     private Long id;
+    @NotBlank(message = "Campo requerido")
     private String marca;
+    @NotBlank(message = "Campo requerido")
     private String modelo;
+    @NotBlank(message = "Campo requerido")
     private String cor;
+    @NotBlank(message = "Campo requerido")
     private String placa;
+    @NotBlank(message = "Campo requerido")
     private String tipo;
 
     public VeiculosDTO() {
