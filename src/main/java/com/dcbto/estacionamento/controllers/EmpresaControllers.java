@@ -3,6 +3,7 @@ package com.dcbto.estacionamento.controllers;
 import com.dcbto.estacionamento.dto.EmpresasDTO;
 import com.dcbto.estacionamento.repositories.EmpresaRepository;
 import com.dcbto.estacionamento.services.EmpresaService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,13 +31,13 @@ public class EmpresaControllers {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EmpresasDTO> update(@PathVariable Long id,@RequestBody EmpresasDTO dto) {
+    public ResponseEntity<EmpresasDTO> update(@PathVariable Long id,@Valid @RequestBody EmpresasDTO dto) {
         dto = service.update(id, dto);
         return ResponseEntity.ok(dto);
     }
 
     @PostMapping("")
-    public ResponseEntity<EmpresasDTO> insert(@RequestBody EmpresasDTO dto) {
+    public ResponseEntity<EmpresasDTO> insert(@Valid @RequestBody EmpresasDTO dto) {
         dto = service.create(dto);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
